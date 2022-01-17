@@ -1,0 +1,36 @@
+{% extends 'base/main.html' %}
+
+{% load crispy_forms_tags %}
+{ block headcontent}
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+{endblock}
+{% block content %}
+<br>
+<div class="col-lg-3 col-md-3 col-sm-3 container justify-content-center">
+        <div class="col-md-20">
+        <div class="card card-body bg-light">
+
+        	     <form class="container" action="/client/client" method="post">
+                      {% csrf_token %}
+                    <section class="form-control">
+						<a href="" class="btn btn-success btn-sn btn-block"><h5>Modifier Un Client</h5></a>
+                          {{ form|crispy }}
+                   </section>
+                     <br>
+
+
+        <!-- <div class="g-recaptcha" data-sitekey="6Ld_qjQUAAAAADjv2scrqpvXK4OrBZALRJFMANpP"></div> -->
+                     <input type="submit" class="btn btn-success" value="Envoyer" name="submit">
+
+
+              </form>
+        </div>
+ </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+{% endblock %}
+{% include 'base/search.html' %}

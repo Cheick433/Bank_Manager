@@ -1,0 +1,82 @@
+{% extends 'base_layout.html' %}
+
+{% block stylecontent %}
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+        
+        body {
+            background-color: white;
+        }
+        h2 {
+            font-family: 'Slabo 27px';
+            border-bottom: 1px solid black;
+            font-weight: 900;
+        }
+        form ul {
+            list-style: none;
+        }
+    </style>
+
+            
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %}
+
+        
+{% block bodycontent %}
+    <h2 class="container text-center">Creer Un utlisatueur</h2>
+
+<div class="container">
+
+<div class="col-lg-4 col-md-4 col-sm-4 container justify-content-center">
+<div class="col">
+        <div class="card card-body bg-light">
+
+            <form class="container" action="/accounts/register/" method="post">
+                  {% csrf_token %}
+                <section class="form-control">
+                      <h4>Saisir les bases</h4>
+                         {{ form }}
+                </section>
+               <br>
+        
+        <!-- <div class="g-recaptcha" data-sitekey="6Ld_qjQUAAAAADjv2scrqpvXK4OrBZALRJFMANpP"></div> -->
+        
+                <section>
+                        <input type="checkbox" required>
+                         <small>By clicking "Create account"
+                </section>
+                <input type="submit" class="form-control btn btn-sm btn-success" value="Creer compte" name="submit"/>
+        
+            </form>
+      </div>
+
+	</div>
+
+
+</div>
+</div>
+    <br>
+{% endblock %}
+
+{% block scriptcontent %}
+    <script>
+        $(".active").removeClass("active");
+        $("#nav-create").addClass("active");
+
+        $(".helptext").html("");
+
+        var input_text = $("input[type=text]");
+        input_text.addClass("form-control");
+
+        var input_pass = $("input[type=password]");
+        input_pass.addClass("form-control");
+
+        $("form ul li").addClass("btn btn-danger");
+
+        // var labels = $("label");
+
+        // labels.addClass("col");
+        // input_text.addClass("col")
+        // input_pass.addClass("col");
+    </script>
+{% endblock %}

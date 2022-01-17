@@ -1,0 +1,137 @@
+{% extends 'base/main.html' %}
+
+{% block headcontent %}
+
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="row justify-content-center">
+<div class="col-md-5">
+    <div class="card card-body">
+        <a class="btn btn-success"><h5>Les informations Du Client</h5></a>
+        <hr>
+        <div>
+            <table>
+                <tr>
+                    <td><h6>Nom:</h6></td>
+                    <td><h6>{{client1.Nom}}</h6></td>
+                </tr>
+                <tr>
+                    <td><h6>Prenom:</h6></td>
+                    <td><h6>{{client1.prenom}}</h6></td>
+                </tr>
+                 <tr>
+                    <td><h6>Telephone:</h6></td>
+                    <td><h6>{{client1.telephone}}</h6></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="card card-body">
+        <a class="btn btn-success"><h5>Les informations Du Compte</h5></a>
+        <hr>
+        <table>
+        <tr>
+            <td><h6>Numero Compte:</h6></td>
+            <td><h6>{{client1.num_compte}}</h6></td>
+
+        </tr>
+        <tr>
+            <td><h6>Solde de Compte:</h6></td>
+            <td><h6>{{client1.montant}}</h6></td>
+
+        </tr>
+        <tr>
+            <td><h6>Date De Creation:</h6></td>
+            <td><h6>{{client1.date_creation}}</h6></td>
+
+        </tr>
+     </table>
+    </div>
+
+</div>
+</div>
+<hr>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card card-body">
+                <a class="btn btn-success"><div><h5>Liste Des Virement</h5></div></a>
+                <hr>
+            <table>
+                <tr>
+                    <th>Destnateur</th>
+                    <th>Date Creation</th>
+                    <th>Montant</th>
+                </tr>
+                {% for virement in virements %}
+                {% if virements is None %}
+                    <tr aria-colspan="3">
+                        <td>Aucun transactions</td>
+
+                    </tr>
+
+                {% endif %}
+
+                <tr>
+                    <th>{{virement.dest_num}}</th>
+                    <th>{{virement.date_virement}}</th>
+                    <th>{{virement.montant_v}}</th>
+                </tr>
+                {% endfor %}
+
+            </table>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card card-body">
+                <a class="btn btn-success btn-sn btn-block"><div><h5>Liste Des Versement</h5></div></a>
+                <hr>
+            <table>
+                <tr>
+                    <th>Date Creation</th>
+                    <th>Montant</th>
+                </tr>
+                {% for versement in versements%}
+                <tr>
+                    <th>{{versement.date_versement}}</th>
+                    <th>{{versement.montant_vr}}</th>
+                </tr>
+                {% endfor %}
+
+            </table>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card card-body">
+                <a class="btn btn-success btn-sn btn-block"><div><h5>Liste Des Retraits</h5></div></a>
+                <hr>
+            <table>
+                <tr>
+                    <th>Date Creation</th>
+                    <th>Montant</th>
+                </tr>
+                {% for retrait in retraits%}
+                <tr>
+                    <th>{{retrait.date_retrait}}</th>
+                    <th>{{retrait.montant_r}}</th>
+                </tr>
+                {% endfor %}
+
+            </table>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+
+{% block stylecontent %}
+    <style>
+
+        h1 {
+            border-bottom: 1px solid;
+        }
+        h4 {
+            font-weight: 400;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+        
+        .foot {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+    </style>
+{% endblock %}
+        
+
+{% block bodycontent %}
+<div class="view" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/Others/architecture.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+
+    <div class="container text-center">
+        <h1><em>Bienvenue</em></h1>
+        <h4><em>Transaction</em></h4>
+    </div>
+    
+    <br>
+    
+    <div class="container text-center">
+        <a href=""><button class="btn btn-primary" id="acc"><i class="fa fa-user"></i> Creer un user</button></a>
+        <br> <br>
+        <a href="{% url 'accounts:signin' %}"><button class="btn btn-success" id="sign_in"><i class="fa fa-sign-in"></i> Inscription</button></a>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+{% endblock %}
