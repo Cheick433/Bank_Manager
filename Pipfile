@@ -9,6 +9,8 @@ django-crispy-forms = "*"
 django-forms-bootstrap = "*"
 django-bootstrap-icons = "*"
 django-bootstrap-modal-forms = "*"
+graphviz = "*"
+django-heroku = "*"
 
 [dev-packages]
 

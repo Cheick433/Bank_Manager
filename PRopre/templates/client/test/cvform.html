@@ -1,0 +1,534 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+   
+    <!-- <link href="{% static 'home/css/style.css' %}" rel="stylesheet"> -->
+    <script src="https://kit.fontawesome.com/bbfda0b90c.js" crossorigin="anonymous"></script>
+    <link href="{% static 'home/css/all.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}"  crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'home/css/w3.css'%}">
+     <style>
+       .sidebar {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: -220;
+  top: 0;
+  left: 0;
+  background-color: rgb(255, 249, 249);
+ margin-top: 225px;
+  padding-top: 16px;
+  position: absolute;
+}
+
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    /* overflow: hidden; */
+}
+       .bg-light {
+       background-color: white !important;
+       /* #bfebd1  */
+       }
+       .alert-primary {
+    color: #004085;
+    background-color: #cfd2d526;
+    border-color: #e6e7e9;
+}
+.chexbox-scroll{
+  border: 1px solid #e6e7e9;
+  border-radius:4px;
+  width: 81%;
+  height: 100px;
+  overflow-y: scroll;
+  margin-left: 10px;
+  
+
+}
+.navbar-light .navbar-toggler {
+  float: right;
+    color: rgba(0,0,0,.5);
+    border-color: rgba(0,0,0,.1);
+}
+.navbar-toggler:focus, .navbar-toggler:hover {
+    text-decoration: none;
+}
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+}
+.fa,
+.fas,
+.far,
+.fal,
+.fad,
+.fab {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1; }
+.fa-heart:before {
+  content: "\f004"; }
+.wavet{
+  position: fixed;
+  top:0;
+  float:right;
+  right: 0;
+  z-index: 1000;
+}
+@media screen and (max-width: 900px){
+
+
+	.wavet{
+		display: none;
+	}
+
+	
+}
+a{
+  color:#bfebd1;
+}
+a:hover{
+  color:#e6e7e9;
+}
+     </style>
+<script type="text/javascript">
+function w3_open() {
+  document.getElementById("mySidebar").style.width = "100%";
+  document.getElementById("mySidebar").style.display = "block";
+  // document.getElementById("w3-container").style.display = "none";
+
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+
+  
+}
+</script>
+    <title>Ajouter CVs</title>
+  </head>
+  <body>
+    
+    {% include "pages/navbar.html" %}
+    <!-- interet Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="{% url 'sections:interet'%}" method="POST"  > 
+              <div class="form-group"> 
+             {% csrf_token %}
+             {{Interet_form|crispy}}
+            
+              </div>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- competence Modal-->
+    <div class="modal fade" id="competenceModal" tabindex="-1" role="dialog" aria-labelledby="competenceModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <form action="{% url 'sections:competence' %}" method="POST"  > 
+          <div class="form-group "> 
+         {% csrf_token %}
+         {{Competence_form|crispy}}
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- langueModal -->
+    <div class="modal fade" id="langueModal" tabindex="-1" role="dialog" aria-labelledby="langueModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <form action="" method="POST"  > 
+            <div class="form-group"> 
+           {% csrf_token %}
+           
+           {{langue_form|crispy}}
+           <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+            </div>
+            </div> 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- certificationModal -->
+    <div class="modal fade" id="certificationModal" tabindex="-1" role="dialog" aria-labelledby="certificationModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <form action="" method="POST"  > 
+                <div class="form-group"> 
+               {% csrf_token %}
+               {{Certification_form|crispy}}
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- experienceModal -->
+    <div class="modal fade" id="experienceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <form action="" method="POST"  > 
+                <div class="form-group"> 
+               {% csrf_token %}
+               
+              {{Experience_form|crispy}}
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+             </div> 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+   <!-- declarationModal -->
+   <div class="modal fade" id="declarationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <form action="" method="POST"  > 
+              <div class="form-group"> 
+             {% csrf_token %}
+             {{DeclarationPerson_form|crispy}}
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+           </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+   </div>
+   <!-- formationModal -->
+   <div class="modal fade" id="formationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container center">
+            <form action="" method="POST"  > 
+              <div class="form-group"> 
+             {% csrf_token %}
+             <div class="form-row">
+                    <div class="form-group col-md-6 mb-0">
+           {{Formation_form.Nom|as_crispy_field}}
+                    </div>
+                  
+                    <div class="form-group col-md-6 mb-0">
+                      {{Formation_form.Niveau|as_crispy_field}}
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6 mb-0">
+                      {{Formation_form.institution|as_crispy_field}}
+                   
+                      {{Formation_form.DateDebut|as_crispy_field}} 
+                      {{Formation_form.DateFin|as_crispy_field}}
+                    </div>
+                  
+                    <div class="form-group col-md-6 mb-0">
+                      {{Formation_form.Description|as_crispy_field}}<br>
+                    </div>
+                  </div>
+         
+             </div>
+             
+                <!-- <input type="text" name="" value="{{Candidat.id}}">  -->
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+   </div>
+   <!-- refferenceModal -->
+   <div class="modal fade" id="refferenceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <form action="" method="POST"  > 
+              <div class="form-group"> 
+             {% csrf_token %}
+             {{Réfférence_form|crispy}}
+             
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+    <!-- end modal-dialog-->
+    </div>
+    <!--  -->
+    <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+      <button onclick="w3_close()" class="w3-bar-item w3-large">fermer &times;</button>
+      <div class="container pb-2">
+        <div class="row">
+          <div class="col-sm ">Competences:3</div>
+        </div>
+        </div>
+      <div class="container">
+        <div class="row">
+          {% for cv in can %}
+          <div class="col-sm">
+            <a href="#" class="w3-bar-item w3-button">
+              <div class="card" style="width: 18rem;">
+              <img src="{% static 'images/res.jpg' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <a href="{% url 'sections:cv' cv.id %}" class="btn btn-primary">VOIR LE CV</a>
+              </div>
+            </div></a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="container p-5">
+        <div class="row" style="font-size:13px;color:rgb(36, 37, 36)">
+          <div class="col-sm ">
+Competence:<div class="badge bg-primary"><a href="{% url 'sections:Lite_comp'%}">{{competence}}</a></div></div>
+          <div class="col">Interets:<div class="badge bg-primary"><a href="{% url 'sections:listInteret' %}">{{interetsCount}}</a></div></div>
+          <div class="col">Formations:<div class="badge bg-secondary"><a>{{formationCount}}</a></div></div>
+          <div class="col">Declaration:<div class="badge bg-success"><a href="{% url 'sections:Lite_dec'%}">{{declarationCount}}</a></div></div>
+          <div class="col">Langues:<div class="badge bg-danger"><a>{{langueCount}}</a></div></div>
+          <div class="col">Certificats:<div class="badge bg-warning "><a>{{certificationCount}}</a></div></div>
+          <div class="col">Experiences:<div class="badge bg-info "><a href="{% url 'sections:Lite_expr'%}">{{experienceCount}}</a></div></div>
+          <div class="col">Refferances:<div class="badge bg-light "><a>{{RéfférenceCount}}</a></div></div>
+          
+        </div>
+      </div>
+      
+     
+     
+    </div>
+    
+    <div class="w3-teal" >
+      <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()" style="color:#111">☰</button>
+      <!-- <div class="w3-container">
+        <h1 style="color: rgb(49, 46, 46)">
+          Ajouter une nouvelle CV
+        </h1>
+      </div> -->
+    </div>
+  <div class="w3-container" id="w3-container">
+
+  
+ <form action="" method="POST" >
+  
+  <div class="container lg shadow" >
+    <div class="form-group" > 
+      {% csrf_token %}
+      <!--  -->
+      <div class="card m-5 shadow">
+        <div class="card-body">
+          <div class="row"> 
+            
+            
+            <div class="chexbox-scroll mb-3"><div class="form-group col-md-5 mb-0"> {{cv_form.Competence|as_crispy_field}}</div></div>
+            <div class="form-group col-md-2 m-auto"><a><img src="{% static '/images/plus.png'%}" width="40" height="40" style='cursor: pointer' data-toggle="modal" data-target="#competenceModal"/> </a></div>
+            <!-- <div class="form-group col-md-2 m-auto"><a href="{% url 'sections:modify'  %}" ><img src="{% static '/images/plus.png'%}" width="20" height="20" style='cursor: pointer'/> </a></div> -->
+            
+           
+
+          </div>
+          <div class="row"> 
+            <div class="chexbox-scroll mb-3"><div class="form-group col-md-10 mb-0">  {{cv_form.interet|as_crispy_field}} </div></div>
+            <div class="form-group col-md-2 m-auto"><a><img src="{% static '/images/plus.png'%}" width="40" height="40" style='cursor: pointer'data-toggle="modal" data-target="#exampleModal"/> </a></div>
+           
+
+          </div>
+          <div class="row"> 
+            <div class="chexbox-scroll mb-3"><div class="form-group col-md-10 mb-0">  {{cv_form.Langues|as_crispy_field}} </div></div>
+            <div class="form-group col-md-2 m-auto"><a><img src="{% static '/images/plus.png'%}" width="50" height="50" style='cursor: pointer'data-toggle="modal" data-target="#langueModal"/> </a></div>
+           </div>
+           <div class="row">
+            <div class="chexbox-scroll mb-3"> 
+            <div class="form-group col-md-10 mb-0">   {{cv_form.Certifications|as_crispy_field}} </div>
+            </div>
+            <div class="form-group col-md-2 m-auto"><a><img src="{% static '/images/plus.png'%}" width="50" height="50" style='cursor: pointer'data-toggle="modal" data-target="#certificationModal"/> </a></div>
+           </div>
+           
+           <div class="row"> 
+            <div class="chexbox-scroll mb-3">
+            <div class="form-group col-md-10 mb-0"> {{cv_form.Experiences|as_crispy_field}} </div>
+            </div>
+            <div class="form-group col-md-2 m-auto"><a><img src="{% static '/images/plus.png'%}" width="50" height="50" style='cursor: pointer'data-toggle="modal" data-target="#experienceModal"/> </a></div>
+           </div>
+           <div class="row"> 
+            <div class="form-group col-md-10 mb-0">  {{cv_form.Declaration|as_crispy_field}} </div>
+            <div class="form-group col-md-2 m-auto"><a><img src="{% static '/images/plus.png'%}" width="50" height="50" style='cursor: pointer'data-toggle="modal" data-target="#declarationModal"/> </a></div>
+           </div>
+           <div class="row"> 
+            <div class="chexbox-scroll mb-3">
+            <div class="form-group col-md-10 mb-0"> {{cv_form.Formations|as_crispy_field}} </div>
+            </div>
+            <div class="form-group col-md-2 m-auto"><a><img src="{% static '/images/plus.png'%}" width="50" height="50" style='cursor: pointer'data-toggle="modal" data-target="#formationModal"/> </a></div>
+           </div>
+           <div class="row"> 
+            <div class="chexbox-scroll mb-3">
+            <div class="form-group col-md-10 mb-0"> {{cv_form.Refferances|as_crispy_field}} </div>
+            </div>
+            <div class="form-group col-md-2 m-auto"><a><img src="{% static '/images/plus.png'%}" width="50" height="50" style='cursor: pointer'data-toggle="modal" data-target="#refferenceModal"/> </a></div>
+           </div>
+        </div>
+      </div>
+      
+      <div class="card m-3" >
+        <div class="card-body">
+         
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+          {{cv_form.errors}}
+        </div>
+      </div>
+     
+
+ </form>
+
+</div>
+ <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+    
+
+ 
+    
+</body>
+{% include "pages/footer.html" %}
+</html>
