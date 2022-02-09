@@ -11,6 +11,7 @@ django-bootstrap-icons = "*"
 django-bootstrap-modal-forms = "*"
 graphviz = "*"
 django-heroku = "*"
+django-extensions = "*"
 
 [dev-packages]
 
