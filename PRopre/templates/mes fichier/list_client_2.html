@@ -1,0 +1,79 @@
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/js/datatables1.css">
+     <link rel="stylesheet" type="text/css" href="/static/js/list_tables.css">
+    
+    
+    <div id="wrap">
+      <div class="container">
+            <h3>A demo of Bootstrap data table</h3>
+        <table data-search="true" data-show-colums="true" cellpadding="0" cellspacing="0" border="0" class="display table table-striped table-bordered" id="myTable">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Compte</th>
+              <th>Nom</th>
+              <th>Prenom</th>
+              <th>Details</th>
+              <th>Modiffier</th>
+              <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+                <tr>
+                   <td>{{client.id}}</td>
+                   <td><a href="{% url 'info_client' client.id %}">{{client.num_compte}}</a></td>
+                   <td>{{client.Nom}}</td>
+                   <td>{{client.prenom}}</td>
+                   <td><a href="{% url 'info_client' client.id %}"><div class="text-center"><img src="/static/css/images/info.svg"></div></a></td>
+                   <td>
+                      <a href="{% url 'modiffier_client' client.id %}"><button  class="update-book btn btn-warning" data-toggle="modal" data-target="positiondisplaypadding"> 
+                        <!--<button class="btn btn-success show-form-update" data-url="{% url 'modiffier_client' client.id %}"></button>-->
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        Edit</button></a></td>
+                   <td><a href="{% url 'supprimer_client' client.id %}" class="btn btn-sm"><div class="text-center"><img src="/static/css/images/delete.svg" style="width:23px;"></div></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+         
+          <tfoot>
+            <tr>
+              <th>#</th>
+              <th>Compte</th>
+              <th>Nom</th>
+              <th>Prenom</th>
+              <th>Details</th>
+              <th>Modiffier</th>
+              <th>Supprimer</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+<!-- test la fuction de javaScript-->
+<!--<script type="text/javascript">
+   $(document).ready(function () {
+         $("#myTable").dataTable({
+            "oLanguage": {
+            "sSearch": "Recherche :",
+            "sInfo": "",
+            "sZeroRecords": "La recherche n'a donné aucun résultat...",
+            "bSortClasses": false
+            },
+            "bPaginate": false,
+            "bInfo": false,
+            "aoColumnDefs": [ 
+              { 
+                "bSortable": false, 
+                "sDefaultContent":"",
+                "aTargets": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27] 
+              } 
+            ],
+            "aaSorting": []
+ 
+          }); 
+      } );
+</script>-->
+<script src="/static/js/plugins.js"></script>
+<script src="/static/js/list.js"></script>
+<script src="/static/js/Bootstrap.min.js"></script>

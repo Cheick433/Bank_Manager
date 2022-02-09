@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +28,7 @@ SECRET_KEY = 'django-insecure-hswy-&_8z(1a2tdl^_r5buq*nabb@1p*zjix$5z62pkr3=@dqh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://chouaibapp.herokuapp.com/','127.0.0.1']
 
 
 # Application definition
@@ -53,6 +55,8 @@ INSTALLED_APPS = [
     'Opversement',
     'django_bootstrap_icons',
     'bootstrap_modal_forms',
+    'django_extensions',
+    'pydotplus',
     
 
 
@@ -70,10 +74,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'myapp.urls'
 BOOTSTRAP_NAVBAR = "showcase.navbar:ExampleNavBar"
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 TEMPLATES = [
     {
@@ -97,13 +103,19 @@ WSGI_APPLICATION = 'myapp.wsgi.application'
 
 
 # Database
+# Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config()
+        
 }
 
 
@@ -124,7 +136,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -149,6 +164,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+django_heroku.settings(locals())
 
 #Staticfiles (CSS, JavaScript, Images)
 #https://docs.djangoproject.com/en/2.0/howto/static-files/
@@ -158,3 +174,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 #VENV_PATH = os.path.dirname(BASE_DIR)
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media")
+

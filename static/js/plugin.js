@@ -1,4 +1,4 @@
-$(dobument).ready(function(){
+$(document).ready(function(){
 	var ShowForm = function(){
 		var btn = $(this);
 		$.ajax({
@@ -33,8 +33,13 @@ $(dobument).ready(function(){
     	})
     	return false;
     }
+    //create
+     $(".ShowForm").click(ShowForm)
+    
+     $('#modal-book').on("submit",".create-form",SaveForm)
+ 
     //update
      $('#myTable').on("click",".show-form-update",ShowForm);
     
-     $('#modal-madal').on("submit",".update-form",SaveForm)
+     $('#modal-book').on("submit",".update-form",SaveForm)
 }); 

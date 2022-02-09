@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <title> BPM</title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+  <link rel="stylesheet" type="text/css" href="/static/js/assets/css/bootstrap4.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
 <style>
 .dropdown-menu:hover{
 background-color:green;
 
+}
+
+.change-my-color {
+  fill: green;
 }
 
 </style>
@@ -26,17 +34,17 @@ background-color:green;
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'home' %}">Accueil <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'home' %}"><img src="/static/css/images/home.svg" style="width:20px;" class="change-my-color"> Accueil <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'ajouter_client' %}">Clients</a>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'ajouter_client' %}"><img src="/static/css/images/client-cir.svg" style="width:23px;"> Clients</a>
       </li>
       <!--<li class="nav-item">
         <a class="nav-link" href="#">Pricing</a>-->
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Operatons</a>
+          <img src="/static/css/images/opperation.svg" style="width:23px;"> Operatons</a>
 
         <div class="dropdown-menu bg-success" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="{% url 'Opvirement:ajouter_virement' %}">Virement</a>
@@ -60,7 +68,14 @@ background-color:green;
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="/static/js/plugins.js"></script>
+<script src="/static/js/bootstrap4.min.js"></script>
+<script src="/static/js/jquery.bootstrap.modal.forms.min.js"></script>
+<script src="/static/js/jquery.bootstrap.modal.forms.js"></script>
+<script src="/static/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/plugin.js"></script>
+<script src="/static/js/datatables.min.js"></script>
+
+
   
 
 

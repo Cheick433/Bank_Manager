@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate
@@ -27,6 +28,7 @@ def sign_in(request):
         if user is not None:    # user = form.get_user()
             login(request, user)  # return redirect("profiles:account_status")
             return redirect('home')
+        return HttpResponse('<h1>nom ou mot de passe non valide<h1>')
     else:
         form = AuthenticationForm()
         return render(request, "accounts/sign_in.html", {'form': form})

@@ -41,31 +41,39 @@ def info_client(request, pk):
 
 def modiffier_client(request, pk):
     clients=Propre.objects.get(id = pk)
-    form=ClientModelForm(instance=clients)
-    Montant = clients.montant
+    form1=ClientModelForm(instance=clients)
     if request.method == 'POST':
-         if form.is_valid():
+         if form1.is_valid():
             #form.save()
             nom=request.POST.get('Nom')
             Prenom = request.POST.get('prenom')
             num=request.POST.get('num_compte')
-            #Montant=clients.montant
+            Montant=clients.montant
             tel=request.POST.get('telephone')
             #clients.delete()
             client=Propre.objects.create(id=pk, num_compte=num, montant=float(Montant), Nom=nom, prenom=Prenom, telephone=tel)
+            setattr(client,'montant','Montant')
             return redirect('modiffier_client')
+            #clients.delete()
     clients.delete()
-    context={'form':form,'client':clients}
+    context={'form1':form1,'client':clients}
     #return render(request, 'client/modiffier.html', context)
-    return render(request, 'client/update_client.html', context)
+    return render(request, 'client/modiffier_client.html', context)
+    
  
 def supprimer_client(request, pk):
     client=Propre.objects.get(id = pk)
     if request.method == 'POST':
         client.delete()
-        return redirect('ajouter_client')
-    context={'item':client}
-    return render(request, 'client/supprimer.html', context)
+        return redirect('supprimer_client')
+    return redirect('supprimer_client')
+    #return HttpResponse(request, 'nest pas suppromer')
+    #context={'item':client}
+    #return render(request, 'client/list_client_2.html', context)
 
+def list_client(request):
+    clients=Propre.objects.all()
+    context={'clients':clients}
+    return render(request, 'client/list_client_2.html', context)
 
 
