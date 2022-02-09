@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-hswy-&_8z(1a2tdl^_r5buq*nabb@1p*zjix$5z62pkr3=@dqh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://chouaibapp.herokuapp.com/','127.0.0.1']
 
 
 # Application definition
