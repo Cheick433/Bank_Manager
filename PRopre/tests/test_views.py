@@ -65,8 +65,8 @@ def supprimer_client(request, pk):
     client=Propre.objects.get(id = pk)
     if request.method == 'POST':
         client.delete()
-        return redirect('ajouter_client')
-    #return redirect('supprimer_client')
+        return redirect('supprimer_client')
+    return redirect('supprimer_client')
     #return HttpResponse(request, 'nest pas suppromer')
     #context={'item':client}
     #return render(request, 'client/list_client_2.html', context)

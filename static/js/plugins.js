@@ -6,7 +6,7 @@ $(document).ready(function (){
             'data': null,
             'searchable': false,
             'orderable': false,
-            'defaultContent': '<button type="button" class="btn btn-sm btn-light btn-edit"><img src="/static/css/images/archive.svg" style="width:21 px;"></button>'
+            'defaultContent': '<div class="text-center"><button type="button" class="btn btn-sm btn-light btn-edit"><img src="/static/css/images/archive.svg" style="width:21 px;"></button></div>'
          }
       ]
    });
